@@ -1,0 +1,53 @@
+import { ChangeEvent, FunctionComponent, useState } from "react";
+import { todoDeleted, todoDone } from "../../store/slices/todoSlice";
+
+import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
+import DeleteIcon from "@mui/icons-material/Delete";
+import EditIcon from "@mui/icons-material/Edit";
+import IconButton from "@mui/material/IconButton";
+import Input from "@mui/material/Input";
+import pink from "@mui/material/colors/pink";
+import styles from "./SingleTodoCard.module.scss";
+import { useDispatch } from "react-redux";
+
+interface ISingleTodoCard {
+  id: string;
+  name: string;
+}
+
+const SingleTodoCard: FunctionComponent<ISingleTodoCard> = ({ name, id }) => {
+  const [done, setDone] = useState(false);
+  const dispatch = useDispatch();
+
+  const deleteTodo = () => {
+    dispatch(todoDeleted(id));
+  };
+
+  const markAsDoneTodo = () => {
+    setDone(!done);
+    dispatch(todoDone(id));
+  };
+
+  return (
+    <li key={id} className={done ? styles.cardDone : styles.card}>
+      <Input
+        aria-label="Demo input"
+        placeholder={name}
+        className={styles.todoValue}
+      />
+      <div className={styles.buttonsSection}>
+        <IconButton onClick={markAsDoneTodo} disabled={done} aria-label="done">
+          <CheckCircleOutlineIcon color={done ? "success" : "disabled"} />
+        </IconButton>
+        <IconButton aria-label="edit">
+          <EditIcon color="secondary" />
+        </IconButton>
+        <IconButton onClick={deleteTodo} aria-label="delete">
+          <DeleteIcon sx={{ color: pink[500] }} />
+        </IconButton>
+      </div>
+    </li>
+  );
+};
+
+export default SingleTodoCard;

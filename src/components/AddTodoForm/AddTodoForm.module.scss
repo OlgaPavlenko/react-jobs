@@ -1,0 +1,22 @@
+.form {
+  position: absolute;
+  top: 20%;
+  display: flex;
+  align-items: center;
+  min-height: 2.5rem;
+}
+
+.todoValue {
+  min-width: 20rem;
+  margin-right: 15px;
+}
+
+.addButton {
+  border: none;
+  border-radius: 3px;
+  min-width: 7.5rem;
+  min-height: 2.35rem;
+  background-color: rgb(37, 99, 235);
+  color: white;
+  font-weight: 700;
+}

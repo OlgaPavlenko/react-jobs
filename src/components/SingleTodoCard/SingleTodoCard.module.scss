@@ -1,0 +1,39 @@
+.card {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+
+  &:last-child {
+    margin-bottom: 0px;
+  }
+}
+
+.cardDone {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+  text-decoration: line-through;
+
+  &:last-child {
+    margin-bottom: 0px;
+  }
+}
+
+.todoValue {
+  min-width: 20rem;
+  margin-right: 15px;
+}
+
+.buttonsSection {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  min-width: 6.563rem;
+  min-height: 2.4rem;
+  border-radius: 3px;
+  background-color: aliceblue;
+}
+.button {
+  width: 100%;
+  height: 100%;
+}
