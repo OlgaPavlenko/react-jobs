@@ -1,5 +1,9 @@
 import { ChangeEvent, FunctionComponent, useState } from "react";
-import { todoDeleted, todoDone } from "../../store/slices/todoSlice";
+import {
+  todoDeleted,
+  todoDone,
+  toggleInputForm,
+} from "../../store/slices/todoSlice";
 
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -28,6 +32,10 @@ const SingleTodoCard: FunctionComponent<ISingleTodoCard> = ({ name, id }) => {
     dispatch(todoDone(id));
   };
 
+  const editTodo = () => {
+    dispatch(toggleInputForm({ id, name }));
+  };
+
   return (
     <li key={id} className={done ? styles.cardDone : styles.card}>
       <Input
@@ -39,7 +47,7 @@ const SingleTodoCard: FunctionComponent<ISingleTodoCard> = ({ name, id }) => {
         <IconButton onClick={markAsDoneTodo} disabled={done} aria-label="done">
           <CheckCircleOutlineIcon color={done ? "success" : "disabled"} />
         </IconButton>
-        <IconButton aria-label="edit">
+        <IconButton onClick={editTodo} aria-label="edit">
           <EditIcon color="secondary" />
         </IconButton>
         <IconButton onClick={deleteTodo} aria-label="delete">

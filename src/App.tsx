@@ -5,7 +5,7 @@ import { FC } from "react";
 
 const App: FC = () => {
   return (
-    <div className="App">
+    <div >
       <div className="container">
         <Card />
       </div>

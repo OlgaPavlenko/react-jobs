@@ -5,10 +5,16 @@ export interface ITodo {
   name: string;
   isDone: boolean;
 }
+
+export interface ItodoUpdate {
+  id?: string;
+  name?: string;
+  isDone?: boolean;
+}
 export interface ITodos {
   todos: ITodo[];
-  toggleForm: boolean;
-  todoUpdate: {};
+  toggleInputForm: boolean;
+  todoUpdate: ItodoUpdate;
 }
 const initialState: ITodos = {
   todos: [
@@ -20,7 +26,7 @@ const initialState: ITodos = {
     { id: nanoid(), name: "make coffe", isDone: false },
     { id: nanoid(), name: "play tennis", isDone: false },
   ],
-  toggleForm: true,
+  toggleInputForm: true,
   todoUpdate: {},
 };
 
@@ -42,9 +48,28 @@ export const todoSlice = createSlice({
     todoDeleted: (state, action) => {
       state.todos = state.todos.filter((todo) => todo.id !== action.payload);
     },
+    toggleInputForm: (state, action) => {
+      state.toggleInputForm = !state.toggleInputForm;
+      state.todoUpdate = { ...action.payload };
+    },
+    todoUpdated: (state, action) => {
+      state.todos = state.todos.map((todo) => {
+        if (todo.id === action.payload.id) {
+          return { ...todo, name: action.payload.name };
+        }
+        return todo;
+      });
+      state.toggleInputForm = !state.toggleInputForm;
+    },
   },
 });
 
-export const { todoAdded, todoCleared, todoDeleted, todoDone } =
-  todoSlice.actions;
+export const {
+  todoAdded,
+  todoCleared,
+  todoDeleted,
+  todoDone,
+  toggleInputForm,
+  todoUpdated,
+} = todoSlice.actions;
 export default todoSlice.reducer;
