@@ -1,4 +1,4 @@
-import { ChangeEvent, FunctionComponent, useState } from "react";
+import { FunctionComponent, useState } from "react";
 import {
   todoDeleted,
   todoDone,

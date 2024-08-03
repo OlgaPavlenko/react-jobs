@@ -37,7 +37,7 @@ export const todoSlice = createSlice({
     todoAdded: (state, action) => {
       state.todos = [...state.todos, action.payload];
     },
-    todoCleared: (state, action) => {
+    todoCleared: (state) => {
       state.todos = [];
     },
     todoDone: (state, action) => {
