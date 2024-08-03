@@ -48,14 +48,22 @@ const SingleTodoCard: FunctionComponent<ISingleTodoCard> = ({ name, id }) => {
           onClick={markAsDoneTodo}
           disabled={done}
           aria-label="done"
-          sx={{ px: 0.5 }}
+          sx={{ px: 0.5, mx: 0.25 }}
         >
           <CheckCircleOutlineIcon color={done ? "success" : "disabled"} />
         </IconButton>
-        <IconButton onClick={editTodo} aria-label="edit" sx={{ px: 0.5 }}>
+        <IconButton
+          onClick={editTodo}
+          aria-label="edit"
+          sx={{ px: 0.5, mx: 0.25 }}
+        >
           <EditIcon color="secondary" />
         </IconButton>
-        <IconButton onClick={deleteTodo} aria-label="delete" sx={{ px: 0.5 }}>
+        <IconButton
+          onClick={deleteTodo}
+          aria-label="delete"
+          sx={{ px: 0.5, mx: 0.25 }}
+        >
           <DeleteIcon sx={{ color: pink[500] }} />
         </IconButton>
       </div>
