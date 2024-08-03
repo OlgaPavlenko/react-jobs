@@ -3,12 +3,21 @@
   top: 20%;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   min-height: 2.5rem;
+
+  @media only screen and (max-width: 767.98px) {
+    min-width: 100%;
+    justify-content: center;
+  }
 }
 
 .todoValue {
-  min-width: 20rem;
-  margin-right: 15px;
+  margin-right: 0.92rem;
+
+  @media only screen and (min-width: 350px) {
+    min-width: 20rem;
+  }
 }
 
 .addButton {

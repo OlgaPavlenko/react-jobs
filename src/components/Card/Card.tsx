@@ -24,7 +24,7 @@ export const Card: () => JSX.Element = () => {
       <h1 className={styles.header}>My Todo List</h1>
       {toggleForm ? <AddTodoForm /> : <EditTodo />}
 
-      <ul>
+      <ul className={styles.todo}>
         {todos.map(({ id, name }) => {
           return <SingleTodoCard key={id} id={id} name={name} />;
         })}

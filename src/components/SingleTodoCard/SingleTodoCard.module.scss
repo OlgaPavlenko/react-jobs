@@ -22,6 +22,11 @@
 .todoValue {
   min-width: 20rem;
   margin-right: 15px;
+
+  @media only screen and (max-width: 350px) {
+    min-width: 15rem;
+    margin-right: 0.5rem;
+  }
 }
 
 .buttonsSection {
@@ -32,6 +37,10 @@
   min-height: 2.4rem;
   border-radius: 3px;
   background-color: aliceblue;
+
+  @media only screen and (max-width: 350px) {
+    justify-content: center;
+  }
 }
 .button {
   width: 100%;
