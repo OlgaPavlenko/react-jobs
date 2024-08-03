@@ -16,7 +16,7 @@ export const Card: () => JSX.Element = () => {
   const dispatch = useDispatch();
   const toggleForm = useSelector(toggleInputFormSelector);
   const clearAllTodoes = () => {
-    dispatch(todoCleared(null));
+    dispatch(todoCleared());
   };
 
   return (
