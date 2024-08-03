@@ -22,6 +22,7 @@ export const Card: () => JSX.Element = () => {
   return (
     <div className={styles.wrap}>
       <h1 className={styles.header}>My Todo List</h1>
+
       {toggleForm ? <AddTodoForm /> : <EditTodo />}
 
       <ul className={styles.todo}>
