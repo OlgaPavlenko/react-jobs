@@ -4,17 +4,21 @@
   display: flex;
   align-items: center;
   min-height: 2.5rem;
+
+  @media only screen and (max-width: 767.98px) {
+    min-width: 100%;
+    justify-content: center;
+  }
 }
 
 .todoValue {
-  min-width: 20rem;
-  margin-right: 0.9rem;
+  margin-right: 1rem;
 }
 
 .editButton {
   border: none;
   border-radius: 3px;
-  min-width: 7.5rem;
+  min-width: 7rem;
   min-height: 2.35rem;
   background-color: #b782c7;
   color: white;
