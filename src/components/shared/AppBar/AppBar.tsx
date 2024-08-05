@@ -8,7 +8,6 @@ import Avatar from "@mui/material/Avatar";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
-import Home from "../../../pages/Home/Home";
 import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -99,18 +98,6 @@ function ResponsiveAppBar() {
                 display: { xs: "block", md: "none" },
               }}
             >
-              {/* {routes.map(({ id, path }) => (
-                <MenuItem key={id} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">
-                    <Link
-                      className={styles.link}
-                      to={path ? path : "/redux-todos/"}
-                    >
-                      {path.split("/").pop()}
-                    </Link>
-                  </Typography>
-                </MenuItem>
-              ))} */}
               {routes.map(({ id, path }) => {
                 const linkText = path ? path.split("/").pop() : "Home";
 
