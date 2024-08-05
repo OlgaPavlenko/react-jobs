@@ -99,7 +99,9 @@ function ResponsiveAppBar() {
               }}
             >
               {routes.map(({ id, path }) => {
-                const linkText = path ? path.split("/").pop() : "Home";
+                const linkText: string | undefined = path
+                  ? path.split("/").pop()
+                  : "Home";
 
                 return (
                   <MenuItem key={id} onClick={handleCloseNavMenu}>
@@ -114,7 +116,6 @@ function ResponsiveAppBar() {
                   </MenuItem>
                 );
               })}
-              <Outlet />
             </Menu>
           </Box>
           <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
@@ -147,7 +148,7 @@ function ResponsiveAppBar() {
                 >
                   <Link
                     className={styles.link}
-                    to={path ? path : "/redux-todos/Login"}
+                    to={path ? path : "/redux-todos/"}
                   >
                     {linkText}
                   </Link>
