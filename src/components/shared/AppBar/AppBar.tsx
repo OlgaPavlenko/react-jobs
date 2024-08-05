@@ -125,7 +125,7 @@ function ResponsiveAppBar() {
             href="#app-bar-with-responsive-menu"
             sx={{
               mr: 2,
-              display: { xs: "flex", md: "none" },
+              display: { sxs: "flex", md: "none" },
               flexGrow: 1,
               fontFamily: "monospace",
               fontWeight: 700,
