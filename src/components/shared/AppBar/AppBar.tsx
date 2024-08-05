@@ -1,25 +1,32 @@
 import * as React from "react";
 
+import { Link, Outlet } from "react-router-dom";
+
 import AdbIcon from "@mui/icons-material/Adb";
 import AppBar from "@mui/material/AppBar";
 import Avatar from "@mui/material/Avatar";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
+import Home from "../../../pages/Home/Home";
 import IconButton from "@mui/material/IconButton";
-import { Link } from "react-router-dom";
 import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Toolbar from "@mui/material/Toolbar";
 import Tooltip from "@mui/material/Tooltip";
 import Typography from "@mui/material/Typography";
+import { router } from "../../../common/router";
 import styles from "./AppBar.module.scss";
 
-const pages = ["Home", "Todos", "Login"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 function ResponsiveAppBar() {
+  let routes: { id: string; path: string }[] = [];
+
+  if (router.routes[0] && router.routes[0].children) {
+    routes = router.routes[0].children as { id: string; path: string }[];
+  }
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
   );
@@ -92,15 +99,35 @@ function ResponsiveAppBar() {
                 display: { xs: "block", md: "none" },
               }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
+              {/* {routes.map(({ id, path }) => (
+                <MenuItem key={id} onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">
-                    <Link className={styles.link} to={`/redux-todos/${page}`}>
-                      {page}
+                    <Link
+                      className={styles.link}
+                      to={path ? path : "/redux-todos/"}
+                    >
+                      {path.split("/").pop()}
                     </Link>
                   </Typography>
                 </MenuItem>
-              ))}
+              ))} */}
+              {routes.map(({ id, path }) => {
+                const linkText = path ? path.split("/").pop() : "Home";
+
+                return (
+                  <MenuItem key={id} onClick={handleCloseNavMenu}>
+                    <Typography textAlign="center">
+                      <Link
+                        className={styles.link}
+                        to={path ? path : "/redux-todos/"}
+                      >
+                        {linkText}
+                      </Link>
+                    </Typography>
+                  </MenuItem>
+                );
+              })}
+              <Outlet />
             </Menu>
           </Box>
           <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
@@ -123,17 +150,23 @@ function ResponsiveAppBar() {
             LOGO
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "white", display: "block" }}
-              >
-                <Link className={styles.link} to={`/redux-todos/${page}`}>
-                  {page}
-                </Link>
-              </Button>
-            ))}
+            {routes.map(({ id, path }) => {
+              const linkText = path ? path.split("/").pop() : "Home";
+              return (
+                <Button
+                  key={id}
+                  onClick={handleCloseNavMenu}
+                  sx={{ my: 2, color: "white", display: "block" }}
+                >
+                  <Link
+                    className={styles.link}
+                    to={path ? path : "/redux-todos/Login"}
+                  >
+                    {linkText}
+                  </Link>
+                </Button>
+              );
+            })}
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>

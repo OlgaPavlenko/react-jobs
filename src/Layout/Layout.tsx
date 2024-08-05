@@ -1,8 +1,14 @@
 import { FC } from "react";
+import { Outlet } from "react-router-dom";
 import ResponsiveAppBar from "../components/shared/AppBar/AppBar";
 
-const Layout: FC = () => {
-  return <ResponsiveAppBar />;
+const Root: FC = () => {
+  return (
+    <>
+      <ResponsiveAppBar />
+      <Outlet />
+    </>
+  );
 };
 
-export default Layout;
+export default Root;
